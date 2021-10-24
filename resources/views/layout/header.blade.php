@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>
-		@yield('title' , 'MEDISTORE')
+		@yield('title' , 'MEDICARE')
 	</title>
 
 	<meta charset="utf-8">
@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
 
 	@include('partials.style')
-	
+
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<div class="top_nav_left">free shipping on all orders over $50</div>
+						<div class="top_nav_left">free shipping on all orders over ₦5000</div>
 					</div>
 					<div class="col-md-6 text-right">
 						<div class="top_nav_right">
@@ -53,7 +53,7 @@
 										</ul>
 									@else
 										<li class="account">
-											<a href="#"> 
+											<a href="#">
 												<img src="{{ App\Helpers\ImageHelper::getUserImage(Auth::user()->id) }}" class="img rounded-circle" width="50" alt="">
 			                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}<span class="caret"></span>
 			                                </a>

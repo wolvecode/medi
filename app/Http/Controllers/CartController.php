@@ -28,7 +28,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, 
+
+        $this->validate($request,
         [
             'product_id' => 'required'
         ],
@@ -46,7 +47,7 @@ class CartController extends Controller
                     ->first();
         }
 
-        
+
         if (!is_null($cart)) {
             $cart->increment('product_quantity');
         }
@@ -63,7 +64,8 @@ class CartController extends Controller
         }
         $z = Cart::totalItems();
         // dd($z);
-        return json_encode(['status' => 'success' , 'message' => 'Item Added to Cart' , 'total_items' => $z]);
+        return back()->with(['status' => 'success' , 'message' => 'Item Added to Cart' , 'total_items' => $z]);
+        //return json_encode(['status' => 'success' , 'message' => 'Item Added to Cart' , 'total_items' => $z]);
 
 
     }

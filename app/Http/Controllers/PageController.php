@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pharmacy;
 use Illuminate\Http\Request;
 
 use App\Category;
@@ -18,6 +19,12 @@ class PageController extends Controller
         return view('index')->with(compact('category' , 'brand', 'product'));
 	}
 
+    public function con()
+    {
+        return view('pages.con');
+
+    }
+
 	public function category() {
 		$products = Product::latest('id')->get();
 
@@ -28,18 +35,36 @@ class PageController extends Controller
         // $products = Product::latest('id')->get();
         $category = Category::find($id);
         $products = Product::where('category_id', $category->id)->get();
-        
+
             return view('pages.categorywise' ,  compact('products', 'category'));
-        
+
     }
 
     public function brandwise_show($id) {
         // $products = Product::latest('id')->get();
         $brand = Brand::find($id);
         $products = Product::where('brand_id', $brand->id)->get();
-        
+
             return view('pages.brandwise' ,  compact('products', 'brand'));
-        
+
+    }
+
+    public function store(Request $request)
+    {
+
+        $data = $request->validate([
+            'name'=> 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'website' => 'nullable',
+        ]);
+
+        dd($data);
+
+        Pharmacy::create($data);
+
+        Session()->flash('success' , 'Pharmacy Added Successfully !!!');
+        return redirect()->route('contact');
     }
 
 	public function single() {

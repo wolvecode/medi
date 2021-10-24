@@ -73,7 +73,7 @@
 								<div class="cat_product-grid">
 
 									<!-- Product -->
-									
+
 									@foreach($products as $product)
 
 										@include('pages.products')
@@ -126,16 +126,16 @@
 @endsection
 
 @push('scripts')
-	<script> 
+	<script>
 
 		// addtocart
 
-	
+
 
 	// function cart(product_id)
 	// {
 	// 	console.log(product_id);
-	// 	$.post( "http://localhost:8000/carts/store", 
+	// 	$.post( "http://localhost:8000/carts/store",
 	// 	{
 	// 		product_id: product_id
 	// 	})
@@ -164,7 +164,7 @@
 			//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			//     }
 
-			// }); 
+			// });
 
 			$.ajax({
 				url: 'http://localhost:8000/carts/store',

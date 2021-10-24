@@ -1,5 +1,12 @@
+@if(session('status'))
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <p>{{ session('message') }}</p>
+    </div>
+@endif
+
 @if($errors->any())
-	<div class="alert alert-danger"> 
+	<div class="alert alert-danger">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<ul>
 			@foreach($errors->all() as $error)

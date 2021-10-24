@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\user;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +11,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = user::latest('id')->get();
+        $users = User::latest('id')->get();
         //dd($products);
 
         return view('admin.user.index', compact('users'));

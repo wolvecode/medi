@@ -32,7 +32,6 @@ class CategoryController extends Controller
         $req -> validate([
             'name' => 'required|max:100',
             'description' => 'required',
-
         ]);
 
         $category = new Category;

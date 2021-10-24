@@ -9,8 +9,8 @@
 			<div class="row align-items-center fill_height">
 				<div class="col">
 					<div class="main_slider_content">
-						<h6>Welcome to MediStore Pharmacy</h6>
-						<h1>Focus on Purity and Quality</h1>
+						<h6>Welcome to MediCare Pharmacy</h6>
+						<h1>Focus on verify brand</h1>
 						<div class="red_button shop_now_button"><a href="{{ route('category') }}">explore now</a></div>
 					</div>
 				</div>
@@ -65,24 +65,26 @@
 
 						<!-- Product 1 -->
 						@foreach( $product as $item )
-						<div class="product-item" id="item-{{ $item->category->id }}">
+						<div class="product-item" id="item-{{ $item->category ? $item->category->id : '' }}">
 							<div class="product discount product_filter">
 								<div class="product_image">
-									<img src="{{asset('images/products/' . $item->image)}}" alt="">
+                                    <a href="{{ route('single.show' , $item->id) }}">
+                                        <img src="{{asset('images/products/' . $item->image)}}" alt="">
+                                    </a>
 								</div>
 								<div class="favorite favorite_left"></div>
 								<div class="product_info">
-									<h6 class="product_name"><a href="{{ route('single') }}">{{ $item->title}}</a></h6>
-									<div class="product_price">TK {{ $item->price }}</div>
+									<h6 class="product_name"><a href="{{ route('single.show' , $item->id) }}">{{ $item->title}}</a></h6>
+									<div class="product_price">₦ {{ $item->price }}</div>
 								</div>
 							</div>
 							<!-- <div class="red_button add_to_cart_button"><a href="#" onclick="cart({{ $item->id }})">add to cart</a></div> -->
-							
-							<div class="red_button add_to_cart_button"> 
-								<form action="{{ route ('cart.store') }}" method="post"> 
+
+							<div class="red_button add_to_cart_button">
+								<form action="{{ route ('cart.store') }}" method="post">
 	 							@csrf
 									<input type="hidden" name="product_id" value="{{ $item->id }}">
-									<button type="button" class="cart" value="{{ $item->id }}">add to cart</button>
+									<button class="b cart" value="{{ $item->id }}">add to cart</button>
 								</form>
 
 							</div>
@@ -228,16 +230,16 @@
 @endsection
 
 @push('scripts')
-	<script> 
+	<script>
 
 		// addtocart
 
-	
+
 
 	// function cart(product_id)
 	// {
 	// 	console.log(product_id);
-	// 	$.post( "http://localhost:8000/carts/store", 
+	// 	$.post( "http://localhost:8000/carts/store",
 	// 	{
 	// 		product_id: product_id
 	// 	})
@@ -266,7 +268,7 @@
 			//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			//     }
 
-			// }); 
+			// });
 
 			$.ajax({
 				url: 'http://localhost:8000/carts/store',

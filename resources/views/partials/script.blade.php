@@ -22,5 +22,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="{{asset('js/' . 'contact_custom.js')}}"></script>
 
-	@stack('scripts')
+@stack('scripts')
 

@@ -22,11 +22,24 @@ Route::get('/pages/brand/{id}', 'PageController@brandwise_show')->name('brandwis
 Route::get('/pages/single', 'PageController@single')->name('single');
 Route::get('/pages/single/{id}', 'PageController@single_show')->name('single.show');
 
-Route::get('/pages/contact', 'PageController@contact')->name('contact');
+Route::get('/pages/find/pharmacy', 'PageController@contact')->name('contact');
+Route::get('/pages/contact', 'PageController@con')->name('con');
 
 Route::get('/search', 'PageController@search')->name('search');
 // Route::resource('category', 'CategoryController');
 // category.index, category.create,
+
+//Pharmacy pages route
+Route::group(['prefix' => 'pharmacy'], function(){
+    Route::get('/', 'PharmacyController@create')->name('pharmacy.create');
+    Route::get('/all', 'PharmacyController@index')->name('pharmacy.index');
+    Route::get('/edit/{id}', 'PharmacyController@edit')->name('pharmacy.edit');
+
+    Route::post('/update/{id}', 'PharmacyController@update')->name('pharmacy.update');
+    Route::post('/add', 'PharmacyController@store')->name('pharmacy.add');
+    Route::post('/delete/{id}', 'PharmacyController@destroy')->name('pharmacy.delete');
+});
+
 
 //admin pages route
 Route::group(['prefix' => 'admin'], function(){

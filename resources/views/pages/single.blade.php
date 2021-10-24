@@ -83,10 +83,10 @@
 							<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
 						</div>
 						<div class="red_button sin_add_to_cart_button">
-							<form action="{{ route ('cart.store') }}" method="post"> 
+							<form action="{{ route ('cart.store', $product->id) }}" method="post">
  							@csrf
 								<input type="hidden" name="product_id" value="{{ $product->id }}">
-								<button type="button" class="cart" value="{{ $product->id }}">add to cart</button>
+								<button  class="cart btn" value="{{ $product->id }}">add to cart</button>
 							</form>
 						</div>
 						<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
@@ -269,16 +269,16 @@
 
 
 @push('scripts')
-	<script> 
+	<script>
 
 		// addtocart
 
-	
+
 
 	// function cart(product_id)
 	// {
 	// 	console.log(product_id);
-	// 	$.post( "http://localhost:8000/carts/store", 
+	// 	$.post( "http://localhost:8000/carts/store",
 	// 	{
 	// 		product_id: product_id
 	// 	})
@@ -307,7 +307,7 @@
 			//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			//     }
 
-			// }); 
+			// });
 
 			$.ajax({
 				url: 'http://localhost:8000/carts/store',

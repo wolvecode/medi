@@ -5,16 +5,17 @@
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a href="{{ route('index') }}">medi<span>store</span></a>
+							<a href="{{ route('index') }}">medi<span>care</span></a>
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_menu">
 								<li><a href="{{ route('index') }}">home</a></li>
 								<li><a href="{{ route('category') }}">store</a></li>
-								<li><a href="#deal">about us</a></li>
-								<li><a href="#blog">news</a></li>
-								<li><a href="#blog">blog</a></li>
-								<li><a href="{{ route('contact') }}">contact</a></li>
+								<li><a href="{{ route('con') }}">contact us</a></li>
+{{--								<li><a href="#">about us</a></li>--}}
+{{--								<li><a href="#">news</a></li>--}}
+{{--								<li><a href="#">blog</a></li>--}}
+								<li><a href="{{ route('contact') }}">Find pharmacy</a></li>
 							</ul>
 							<ul class="navbar_user">
 								<li>
